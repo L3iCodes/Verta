@@ -103,7 +103,7 @@ export const updateProfile = async (req, res) => {
         };
 
         // Upload image in cloudinary
-        const uploadResponse = await cloudinary.uploader(profilePic);
+        const uploadResponse = await cloudinary.uploader.upload(profilePic);
         
         // Update user profile picture
         const updatedUser = await User.findByIdAndUpdate(

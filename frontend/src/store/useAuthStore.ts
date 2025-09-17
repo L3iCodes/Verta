@@ -19,6 +19,7 @@ interface AuthState {
   checkAuth: () => Promise<void>;
   signup: (data: User) => Promise<void>;
   login: (data: User) => Promise<void>;
+  updateProfile: (data: any) => Promise<void>;
   logout: () => Promise<void>;
   setAuthUser?: (user: User | null) => void;
 }
@@ -78,4 +79,17 @@ export const useAuthStore = create<AuthState>((set) => ({
             set({isLoggingIn: false});
         };
     },
+
+    updateProfile: async(data) => {
+        set({isUpdatingProfile: true});
+        try{
+            const res = await axiosInstance.put("/auth/update-profile", data)
+            set({authUser: res.data});
+            toast.success("Succesfully updated profile");
+        }catch(error: any){
+            toast.error(error.response.data.message);
+        }finally{
+            set({isUpdatingProfile: false});
+        };
+    }
 }));
