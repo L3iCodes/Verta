@@ -12,9 +12,11 @@ import SettingsPage from './pages/SettingsPage'
 import ProfilePage from './pages/ProfilePage'
 
 import { useAuthStore } from './store/useAuthStore'
+import { useThemeStore } from './store/useThemeStore'
 
 function App() {
   const {checkAuth, authUser} = useAuthStore();
+  const { theme } = useThemeStore();
 
   // Check if user is logged in
   useEffect(() => {
@@ -22,7 +24,7 @@ function App() {
   }, [checkAuth])
 
   return (
-    <div>
+    <div data-theme={theme}>
       <Router>
         <Navbar />
         <Routes>

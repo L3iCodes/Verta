@@ -32,7 +32,6 @@ export default function LoginPage(){
         e.preventDefault();
 
         const success = validateForm();
-        console.log(formData)
         if(success === true) login(formData);
     };
 
