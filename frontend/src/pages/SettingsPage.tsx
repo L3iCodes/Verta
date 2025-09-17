@@ -51,22 +51,22 @@ export default function SettingsPage(){
                                 <div className="w-[30px] h-[30px] bg-accent  rounded-full"/>
                                 <div>   
                                     <h1 className="text-sm font-semibold">Wilhelm</h1>
-                                    <p className="text-xs text-secondary">Online</p>
+                                    <p className="text-xs text-base-content-70">Online</p>
                                 </div>
                             </div>
                             <div className="flex flex-col w-full gap-2 p-2">
                                 <div className="bg-neutral w-fit p-2 rounded-xs space-y-1">
-                                    <p className="text-xs font-medium">"Hey, How's it going?"</p>
+                                    <p className="text-xs text-neutral-content font-medium">"Hey, How's it going?"</p>
                                     <p className="text-[11px] text-neutral-content/60">12:00 PM</p>
                                 </div>
 
-                                <div className="self-end bg-primary text-neutral w-fit p-2 rounded-xs space-y-1">
-                                    <p className="text-xs font-medium">"I'm doing great! just working on some new features?"</p>
-                                    <p className="text-[11px] text-neutral/90">12:00 PM</p>
+                                <div className="self-end bg-primary w-fit p-2 rounded-xs space-y-1">
+                                    <p className="text-xs font-medium text-primary-content">"I'm doing great! just working on some new features?"</p>
+                                    <p className="text-[11px] text-primary-content/90">12:00 PM</p>
                                 </div>
 
                                 <div className="flex w-full p-1 bg-base-300 mt-4 gap-2">
-                                    <p className="text-sm p-1 w-full">This is a message</p>
+                                    <p className="text-sm p-1 w-full text-base-content">This is a message</p>
                                     <div className="bg-accent h-full px-2 py-1 text-neutral rounded-sm">
                                         <Send />
                                     </div>
