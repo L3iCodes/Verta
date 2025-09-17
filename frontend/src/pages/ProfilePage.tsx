@@ -35,7 +35,7 @@ export default function ProfilePage(){
                     <div className="flex flex-col items-center gap-4 ">
                         <div className="relative">
                             <img 
-                                src={authUser.profilePic || sampleImage}
+                                src={authUser?.profilePic || sampleImage}
                                 alt='Profile'
                                 className="size-32 rounded-full object-cover border-4"
                             />

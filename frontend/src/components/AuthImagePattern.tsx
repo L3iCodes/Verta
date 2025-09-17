@@ -4,7 +4,12 @@ interface AuthImageProps{
 };
 
 export default function AuthImagePattern({ title, subtitle }: AuthImageProps){
-    const pattern = Array(9).fill(<div className="bg-primary/30 w-[100px] h-[100px] rounded-md animate-pulse" />);
+    const pattern = Array.from({ length: 9 }).map((_, i) => (
+        <div 
+            key={i} 
+            className="bg-primary/30 w-[100px] h-[100px] rounded-md animate-pulse" 
+        />
+    ));
     
     return(
         <div className="hidden lg:flex flex-col gap-2 items-center justify-center text-neutral-content/50">
