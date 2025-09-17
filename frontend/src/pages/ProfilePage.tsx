@@ -1,7 +1,6 @@
 import { useAuthStore } from "../store/useAuthStore";
 import sampleImage from "../assets/react.svg"
 import { Camera, User} from "lucide-react";
-import { useState } from "react";
 
 export default function ProfilePage(){
     const { authUser, isUpdatingProfile, updateProfile} = useAuthStore();

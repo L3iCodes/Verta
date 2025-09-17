@@ -22,6 +22,7 @@ interface AuthState {
   updateProfile: (data: any) => Promise<void>;
   logout: () => Promise<void>;
   setAuthUser?: (user: User | null) => void;
+  onlineUsers: any[];
 }
 
 export const useAuthStore = create<AuthState>((set) => ({
@@ -30,6 +31,7 @@ export const useAuthStore = create<AuthState>((set) => ({
     isLoggingIn: false,
     isUpdatingProfile: false,
     isCheckingAuth: true,
+    onlineUsers: [],
     
     checkAuth: async() => {
         try{
