@@ -89,7 +89,9 @@ export const useAuthStore = create<AuthState>((set) => ({
             set({authUser: res.data});
             toast.success("Succesfully updated profile");
         }catch(error: any){
-            toast.error(error.response.data.message);
+            const errorMessage =
+                error.response?.data?.message || error.message || "Something went wrong";
+            toast.error(errorMessage);
         }finally{
             set({isUpdatingProfile: false});
         };

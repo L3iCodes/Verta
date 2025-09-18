@@ -1,6 +1,7 @@
 import { useAuthStore } from "../store/useAuthStore";
 import sampleImage from "../assets/react.svg"
 import { Camera, User} from "lucide-react";
+import toast from "react-hot-toast";
 
 export default function ProfilePage(){
     const { authUser, isUpdatingProfile, updateProfile} = useAuthStore();
@@ -13,11 +14,10 @@ export default function ProfilePage(){
         const reader = new FileReader();
         reader.readAsDataURL(file);
         
-
         // Upload image
         reader.onload = async() => {
             const base64Image = reader.result;
-            await updateProfile({profilePic: base64Image});
+            await updateProfile({ profilePic: base64Image });
         };
     };
 

@@ -11,11 +11,12 @@ interface ChatStoreStates {
     
     getUsers: () => Promise<void>;
     getMessages: (userId: string) => Promise<void>;
+    sendMessage: (messageData: any) => Promise<void>;
     setSelectedUser: (user: any) => void;
 };
 
 
-export const useChatStore = create<ChatStoreStates>((set) => ({
+export const useChatStore = create<ChatStoreStates>((set, get) => ({
     messages: [],
     users: [],
     selectedUser: null,
@@ -47,6 +48,16 @@ export const useChatStore = create<ChatStoreStates>((set) => ({
         }finally{
             set({isMessagesLoading: false});
         };
+    },
+
+    sendMessage: async(messageData: any) => {
+        const { messages, selectedUser } = get();
+        try{
+            const res = await axiosInstance.post(`/message/send/${selectedUser._id}`, messageData);
+            set({messages:[...messages, res.data]});
+        }catch(error: any){
+            toast.error(error.response.data.messages)
+        }
     },
 
     setSelectedUser: (user) => {
