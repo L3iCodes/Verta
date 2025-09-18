@@ -15,7 +15,7 @@ import { useAuthStore } from './store/useAuthStore'
 import { useThemeStore } from './store/useThemeStore'
 
 function App() {
-  const {checkAuth, authUser} = useAuthStore();
+  const {checkAuth, authUser, onlineUsers} = useAuthStore();
   const { theme } = useThemeStore();
 
   // Check if user is logged in

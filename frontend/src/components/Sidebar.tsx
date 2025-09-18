@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 import { Users } from "lucide-react";
 import SidebarSkeleton from "./skeletons/SidebarSkeleton"
@@ -10,6 +10,7 @@ import { useAuthStore } from "../store/useAuthStore";
 export default function Sidebar(){
     const { getUsers, users, selectedUser, setSelectedUser, isUsersLoading } = useChatStore();
     const { onlineUsers } = useAuthStore();
+    const [onlineOnly, setOnlineOnly] = useState(false)
 
     // Get users
     useEffect(() => {
@@ -17,6 +18,8 @@ export default function Sidebar(){
     }, [getUsers]);
 
     if(isUsersLoading) return <SidebarSkeleton />
+
+    const filteredUsers = onlineOnly ? users.filter(user => onlineUsers.includes(user._id)) : users
     
     return(
         <aside className="h-full w-20 lg:w-72 border-r border-base-300 flex flex-col transition-all duration-200">
@@ -25,10 +28,24 @@ export default function Sidebar(){
                     <Users className="size-6" />
                     <span className="font-medium hidden lg:block">Contacts</span>
                 </div>
+                <div className="mt-3 hidden lg:flex items-center gap-2">
+                    <label className="cursor-pointer flex items-center gap-2">
+                        <input 
+                            type="checkbox"
+                            checked={onlineOnly}
+                            onChange={(e) => setOnlineOnly(e.target.checked)}
+                            className="checkbox checkbox-sm"
+                        />
+                        <span className="text-sm">
+                            Show online only 
+                            <span className="text-base-content/40 ml-2">({onlineUsers.length -1} online)</span>
+                        </span>
+                    </label>
+                </div>
             </div>
 
             <div className="overflow-y-auto w-full py-3">
-                {users.map(user => (
+                {filteredUsers.map(user => (
                     <button
                         key={user._id}
                         onClick={() => setSelectedUser(user)}
