@@ -33,8 +33,8 @@ export const useChatStore = create<ChatStoreStates>((set, get) => ({
             const res = await axiosInstance.get("/message/users");
             set({users: res.data});
         }catch(error: any){
-            console.log('Error in getUsers:', error)
-            toast.error(error.response.data.messages)
+            // console.log('Error in getUsers:', error)
+            // toast.error(error.response.data.messages)
         }finally{
             set({isUsersLoading: false});
         };
@@ -79,6 +79,7 @@ export const useChatStore = create<ChatStoreStates>((set, get) => ({
         
         socket.on("newMessage", (newMessage: any) => {
             if(newMessage.senderId !== selectedUser._id) return;
+
             set({messages: [...get().messages, newMessage]})
         })
     },
