@@ -61,34 +61,33 @@ export default function ChatContainer(){
                                     </div>
                                     
                                     {/* Chat Content */}
-                                    <div className={`chat-bubble ${message.deleted && "bg-red-500"}`}>
-                                        {message.deleted 
-                                            ? ("Message Deleted")
-                                            : (
-                                                <>
-                                                {message.image && (
-                                                    <img 
-                                                        src={message.image}
-                                                        alt='Attachment'
-                                                        className="max-w-[200px] max-h-[200px] rounded-md object-cover"
-                                                    />
-                                                )}
-                                                {message.text}
-                                                {message.senderId === authUser._id && (
-                                                    <div 
-                                                        onClick={() => deleteMessage(message._id)}
-                                                        className="absolute bottom-0 -left-9 p-2 rounded-full bg-base-200 hover:bg-primary cursor-pointer active:bg-base-200"
-                                                        >
-                                                            <Trash  size={18}  />
-                                                    </div>
-                                                )}
-                                                </>
-                                            )
+                                    <div 
+                                        className={`chat-bubble flex flex-col items-center
+                                                    ${message.deleted && "!bg-base-100 border-1 border-primary"} ${message.senderId === authUser._id && "bg-secondary"}`}
+                                        >
+                                            {message.deleted 
+                                                ? ("Message Deleted")
+                                                : (
+                                                    <>
+                                                        {message.image && (
+                                                            <img 
+                                                                src={message.image}
+                                                                alt='Attachment'
+                                                                className="max-w-[200px] max-h-[200px] rounded-md object-cover"
+                                                            />
+                                                        )}
+                                                        <p className="self-start">{message.text}</p>
+                                                        {message.senderId === authUser._id && (
+                                                            <div 
+                                                                onClick={() => deleteMessage(message._id)}
+                                                                className="absolute bottom-0 -left-9 p-2 rounded-full bg-base-200 hover:bg-primary cursor-pointer active:bg-base-200"
+                                                                >
+                                                                    <Trash  size={18}  />
+                                                            </div>
+                                                        )}
+                                                    </>
+                                                )
                                         }
-
-
-                                        
-                                        
                                     </div>
                                     <div className="chat-header mb-1">
                                         <time className="text-sx opacity-50 ml-1">
