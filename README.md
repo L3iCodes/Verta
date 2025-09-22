@@ -2,7 +2,7 @@
 
 **A React-based Realtime chat application**  
 
-Verta is designed as a sample messaging application where users can sign up, log in, customize their profile, and chat in real time. The project serves as a playground for learning full-stack development, experimenting with UI/UX design (**utilizing Daisy UI**), and practicing real-time features with **WebSockets.io**.
+Verta is designed as a simple messaging application where users can sign up, log in, customize their profile, and chat in real time. The project serves as a playground for learning full-stack development, experimenting with UI/UX design (**utilizing Daisy UI**), and practicing real-time features with **WebSockets.io**.
 
 ![Thumbnail Overview](img/Thumbnail.png)  
 
