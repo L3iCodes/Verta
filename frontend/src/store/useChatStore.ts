@@ -13,6 +13,7 @@ interface ChatStoreStates {
     getUsers: () => Promise<void>;
     getMessages: (userId: string) => Promise<void>;
     sendMessage: (messageData: any) => Promise<void>;
+    deleteMessage: (messageId: string) => Promise<void>;
     setSelectedUser: (user: any) => void;
     listenToMessages: () => void;
     stopListeningToMessages: () => void;
@@ -63,6 +64,20 @@ export const useChatStore = create<ChatStoreStates>((set, get) => ({
         }
     },
 
+    deleteMessage: async(messageId) => {
+        const { selectedUser } = get();
+        try{
+            const res = await axiosInstance.post(`/message/delete/${selectedUser._id}`, { messageId });
+            const updatedMessage = res.data;
+            set((state) => ({
+                messages: state.messages.map((msg) => msg._id === updatedMessage._id ? updatedMessage : msg)
+            }))
+
+        }catch(error: any){
+            toast.error(error.response.data.messages)
+        };
+    },
+
     setSelectedUser: (user) => {
         try{
             set({selectedUser: user})
@@ -81,6 +96,14 @@ export const useChatStore = create<ChatStoreStates>((set, get) => ({
             if(newMessage.senderId !== selectedUser._id) return;
 
             set({messages: [...get().messages, newMessage]})
+        })
+
+        socket.on("deleteMessage", (deletedMessage: any) => {
+            if(deletedMessage.senderId !== selectedUser._id) return;
+
+            set((state) => ({
+                messages: state.messages.map((msg) => msg._id === deletedMessage._id ? deletedMessage : msg)
+            }))
         })
     },
 

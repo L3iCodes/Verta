@@ -17,6 +17,9 @@ const messageSchema = new mongoose.Schema({
     image: {
         type: String,
     },
+    deleted:{
+        type: Boolean,
+    }
 }, { timestamps: true });
 
 const Message = mongoose.model("Message", messageSchema);

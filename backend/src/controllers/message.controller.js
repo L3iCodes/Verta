@@ -75,3 +75,43 @@ export const sendMessage = async (req, res) => {
         res.status(500).json({error: "Internal Server Error"});
     };
 };
+
+export const deleteMessage = async(req, res) => {
+    try{
+        const { messageId } = req.body;
+        const { id: receiverId } = req.params;
+
+        const message = await Message.findByIdAndUpdate(
+            messageId,
+            { $set: {deleted: true} },
+            { new: true }
+        )
+
+        // Realtime messaging
+        const receiverSocketId = getReceiverSocketId(receiverId);
+        // if user is online, send the message realtime
+        if(receiverSocketId){
+            io.to(receiverSocketId).emit("deleteMessage", message)
+        }
+
+        res.status(200).json(message);
+    }catch(error){
+        console.log("Error in deleteMessages Controller: ", error.message);
+        res.status(500).json({error: "Internal Server Error"});
+    }
+};
+
+// Migrate (Add deleted field)
+export const migrate = async (req, res) => {
+  try {
+    const res = await Message.updateMany(
+      { deleted: { $exists: false } },
+      { $set: { deleted: false } }
+    );
+
+    console.log(`Migration complete ✅: ${res.modifiedCount} documents updated`);
+    res.status(201).json({message: "Updated"});
+  } catch (err) {
+    res.status(500).json({error: "Internal Server Error"});
+  }
+};

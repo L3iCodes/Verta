@@ -2,11 +2,6 @@ import { Send } from "lucide-react";
 import { THEMES } from "../constants";
 import { useThemeStore } from "../store/useThemeStore";
 
-const PREVIEW_MESSAGES = [
-    {id: 1, content: "Hey, How's it going?", isSent: false},
-    {id: 2, content: "I'm doing great! just working on some new features", isSent: true}
-];
-
 export default function SettingsPage(){
     const { theme, setTheme } = useThemeStore();
 
@@ -43,7 +38,7 @@ export default function SettingsPage(){
                     ))}
                 </div>
 
-                <div className="flex flex-col gap-1">
+                <div className="flex flex-col gap-1 h-full">
                     <h2 className="text-lg font-semibold">Preview</h2>
                     <div className="flex bg-base-300 w-full h-full rounded-xs p-5 justify-center">
                         <div className="flex flex-col w-xl bg-base-100 p-2 gap-3 border-1">
@@ -72,8 +67,6 @@ export default function SettingsPage(){
                                     </div>
                                 </div>
                             </div>
-
-                            
                         </div>
                     </div>
                 </div>

@@ -8,8 +8,8 @@ export default function Navbar(){
 
     return(
         <header className="w-full bg-base-100 fixed top-0 z-40 backdrop-blur-lg">
-            <div className="flex items-center mx-auto px-4 h-16 w-full">
-                <h1 onClick={() => navigate('/')} className="text-lg font-bold cursor-pointer hover:text-primary active:text-primary/50">Message</h1>
+            <div className="flex items-center mx-auto px-4 h-16 w-full max-w-6xl">
+                <h1 onClick={() => navigate('/')} className="text-lg font-bold cursor-pointer hover:text-primary active:text-primary/50">Verta</h1>
                 <div className="ml-auto flex item-center gap-4">
                     <div onClick={() => navigate('/setting')}className='flex items-center gap-2 cursor-pointer hover:bg-primary active:bg-primary/50 p-1 rounded-sm'>
                         <Settings className='w-5 h-5'/>
@@ -29,7 +29,6 @@ export default function Navbar(){
                             </div>
                         </>
                     )}
-                    
                 </div>
             </div>
         </header>
