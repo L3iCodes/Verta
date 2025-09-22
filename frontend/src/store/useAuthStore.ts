@@ -2,7 +2,6 @@ import { create  } from "zustand";
 import { axiosInstance } from "../lib/axios";
 import toast from "react-hot-toast";
 import { io } from "socket.io-client"
-import { Import } from "lucide-react";
 
 interface User {
   _id?: string;
