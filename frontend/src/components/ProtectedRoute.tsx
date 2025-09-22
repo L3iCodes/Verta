@@ -18,7 +18,6 @@ export default function ProtectedRoute({children}: ProtectedRouteProps){
     }, [isCheckingAuth, authUser, navigate]);
     
     if(isCheckingAuth) {
-        console.log('Checked')
         return (
             <div className='flex flex-col items-center justify-center h-screen w-screen'>
             <span className="loading loading-bars loading-xl"></span>
