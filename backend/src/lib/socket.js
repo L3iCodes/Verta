@@ -9,7 +9,7 @@ const server = http.createServer(app);
 
 const io = new Server(server, {
     cors: {
-        origin: process.env.ORIGIN
+        origin: ["http://localhost:5173", process.env.ORIGIN],
     },
 });
 
@@ -21,7 +21,6 @@ export function getReceiverSocketId(userId) {
 const userSocketMap = {} //{userId: socketId}
 
 io.on("connection", (socket) => {
-
     // get userId sent by the client
     const userId = socket.handshake.query.userId
     if(userId) userSocketMap[userId] = socket.id;
