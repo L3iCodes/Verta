@@ -108,7 +108,7 @@ export default function SignUpPage(){
                                 </div>
                             </div>
 
-                            <button type="submit" className="btn mt-2" disabled={isSigningUp}>
+                            <button type="submit" className="btn border-primary mt-2" disabled={isSigningUp}>
                                 {isSigningUp 
                                     ? (
                                         <>

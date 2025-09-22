@@ -88,7 +88,7 @@ export default function LoginPage(){
                                 </div>
                             </div>
 
-                            <button type="submit" className="btn mt-2" disabled={isLoggingIn}>
+                            <button type="submit" className="btn mt-2 border-primary" disabled={isLoggingIn}>
                                 {isLoggingIn 
                                     ? (
                                         <>

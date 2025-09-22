@@ -36,12 +36,12 @@ export default function ProfilePage(){
                             <img 
                                 src={authUser?.profilePic || sampleImage}
                                 alt='Profile'
-                                className="size-32 rounded-full object-cover border-4"
+                                className="size-32 rounded-full object-cover border-4 border-primary"
                             />
                             <label 
                                 htmlFor="avatar-upload"
-                                className={`flex items-center bg-primary w-fit p-1 rounded-full absolute bottom-0 right-0 cursor-pointer hover:bg-secondary active:bg-primary
-                                            transition-all duration-200
+                                className={`flex items-center bg-primary text-primary-content w-fit p-1 rounded-full absolute bottom-0 right-0 cursor-pointer hover:bg-secondary active:bg-primary
+                                            transition-all duration-200 
                                             ${isUpdatingProfile && "animate-pulse pointer-events-none"}`}
                                 >
                                 <Camera size={30}/>
@@ -55,17 +55,17 @@ export default function ProfilePage(){
                                 />
                             </label>
                         </div>
-                        <p className="text-[12px] text-neutral-content/60">Click the camera icon to update profile</p>
+                        <p className="text-[12px]">Click the camera icon to update profile</p>
                     </div>
 
                     {/* User Information */}
-                    <div className="flex flex-col gap-4">
+                    <div className="flex flex-col gap-4 text-base-content">
                         <div>
                             <label className="label">
                                 <span className="label-text font-medium self-start">Full Name</span>
                             </label>
-                            <div className="flex items-center gap-2 w-full border-1 border-neutral-content/50 py-1 px-2 rounded-sm">
-                                <User className="size-5 text-neutral-content/50"/>
+                            <div className="flex items-center gap-2 w-full border-1 py-1 px-2 rounded-sm">
+                                <User className="size-5"/>
                                 <input 
                                     type="text" 
                                     name="fullName" 
@@ -82,8 +82,8 @@ export default function ProfilePage(){
                             <label className="label">
                                 <span className="label-text font-medium self-start">Email</span>
                             </label>
-                            <div className="flex items-center gap-2 w-full border-1 border-neutral-content/50 py-1 px-2 rounded-sm">
-                                <User className="size-5 text-neutral-content/50"/>
+                            <div className="flex items-center gap-2 w-full border-1 py-1 px-2 rounded-sm">
+                                <User className="size-5"/>
                                 <input 
                                     type="text" 
                                     name="email" 

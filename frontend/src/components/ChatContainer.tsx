@@ -62,8 +62,8 @@ export default function ChatContainer(){
                                     
                                     {/* Chat Content */}
                                     <div 
-                                        className={`chat-bubble flex flex-col items-center
-                                                    ${message.deleted && "!bg-base-100 border-1 border-primary"} ${message.senderId === authUser._id && "bg-secondary"}`}
+                                        className={`chat-bubble flex flex-col items-center bg-neutral
+                                                    ${message.deleted && "!bg-base-100 border-1 border-error"} ${message.senderId === authUser?._id && "bg-primary"}`}
                                         >
                                             {message.deleted 
                                                 ? ("Message Deleted")
@@ -76,8 +76,8 @@ export default function ChatContainer(){
                                                                 className="max-w-[200px] max-h-[200px] rounded-md object-cover"
                                                             />
                                                         )}
-                                                        <p className="self-start">{message.text}</p>
-                                                        {message.senderId === authUser._id && (
+                                                        <p className="self-start text-primary-content">{message.text}</p>
+                                                        {message.senderId === authUser?._id && (
                                                             <div 
                                                                 onClick={() => deleteMessage(message._id)}
                                                                 className="absolute bottom-0 -left-9 p-2 rounded-full bg-base-200 hover:bg-primary cursor-pointer active:bg-base-200"
