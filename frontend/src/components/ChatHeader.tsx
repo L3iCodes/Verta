@@ -3,7 +3,7 @@ import { useChatStore } from "../store/useChatStore"
 import sampleProfile from "../assets/react.svg"
 
 export default function ChatHeader(){
-    const { selectedUser, setSelectedUser } = useChatStore();
+    const { selectedUser } = useChatStore();
     const { onlineUsers } = useAuthStore();
 
     return(

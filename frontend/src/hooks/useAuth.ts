@@ -1,4 +1,4 @@
-import { useQuery, useMutation } from "@tanstack/react-query";
+import { useQuery } from "@tanstack/react-query";
 import { checkAuthAPI } from "../api/auth.api.ts"
 // import type { User } from "../api/auth.api";
 
